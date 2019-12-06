@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html lang="en-US">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="description" content="A web with some Twitch tv channels">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <link rel="stylesheet" href="style.css">
+            <title>Twitch tv App</title>
+        </head>
+        <body>
+            <div class="container-fluid">
+                <div class="card border-dark mb-3" style="width: 60%">
+                    <div class="card-header">
+                    <img src="https://www-cdn.jtvnw.net/images/twitch_logo3.jpg" alt="twitch tv logo">
+                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                        <li class="nav-item">
+                        <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" id="online-tab" data-toggle="tab" href="#online" role="tab" aria-controls="online" aria-selected="false">Online</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" id="offline-tab" data-toggle="tab" href="#offline" role="tab" aria-controls="offline" aria-selected="false">Offline</a>
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                        <div class="card-body">
+                        <div class="card-title text-center text-success">Channels List</div>
+                        <ul class="list-unstyled" id="allTabDrop">
+                            
+                            <!--All channels list will come here-->
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="online" role="tabpanel" aria-labelledby="online-tab">
+                        <div class="card-body">
+                        <div class="card-title text-center text-success">Channels List</div>
+                        <ul class="list-unstyled" id="onlineTabDrop">
+                            
+                            <!--Online list will come here-->
+
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="offline" role="tabpanel" aria-labelledby="offline-tab">
+                        <div class="card-body">
+                        <div class="card-title text-center text-success">Channels List</div>
+                        <ul class="list-unstyled" id="offlineTabDrop">
+                            
+                            <!--Offline list will come here-->
+
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card-footer">Design and built by <strong><a href="abbas-000.github.io" target="_blank">Ali Abbas</a></strong></div>
+                </div>
+                </div>
+                <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+                <script src="script.js"></script>
+        </body>
+</html>
