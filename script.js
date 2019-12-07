@@ -7,7 +7,7 @@ $(document).ready(function() {
     "freecodecamp",
     "storbeck"
   ];
-  //for getting list each channels we use while loop 
+  //for getting list each channels we use while loop
   var i = 0;
   while (i < allChannels.length) {
     //pass each channel to the getJSON method
@@ -16,21 +16,20 @@ $(document).ready(function() {
         allChannels[i] +
         "?callback=?",
       function(streamData) {
-        /*the testName var is only to get the channels name to paas it with an argument in the request url if the channel's stream is null*/
-        var testName = streamData._links.channel.substring(38);
+
+        /*the offlineCHName var is only to get the channels name to paas it with an argument in the request url if the channel's stream is null*/
+        var offlineCHName = streamData._links.channel.substring(38);
 
         if (streamData.stream != null) {
           //the Vars starting from here is to pass there value in the <li> to the HTML
-     
-          var logo = streamData.stream.channel.logo;
-          var name = streamData.stream.channel.display_name;
-          var link = streamData.stream.channel.url;
-          var status = streamData.stream.channel.game;
+
+          var { logo, display_name:name, url:link, game:status } = streamData.stream.channel;
+
           //creating the <li> begins from here
           var media =
             "<li class='media my-4'><img class='mr-3' src=" +
             logo +
-            " alt='channel's logo'><div class='media-body text-center'><a href=" +
+            " alt="+name+"><div class='media-body text-center'><a href=" +
             link +
             " target='_blank'><h5 class='mt-0 mb-1'>" +
             name +
@@ -40,15 +39,15 @@ $(document).ready(function() {
           /*Now pass the created <li> in media var we append it in All and Online tabs since this contains live channels*/
           $("#allTabDrop").append(media);
           $("#onlineTabDrop").append(media);
-          
+
         } else if (streamData.stream === null) {
           //Here we pass the channels name to the url
           var requestUrl =
             "https://wind-bow.gomix.me/twitch-api/channels/" +
-            testName +
+            offlineCHName +
             "?callback=?";//Note: this url is different from the previous one
           //calling the function
-          isOnline(requestUrl);
+          isOffline(requestUrl);
         }
       }
     );
@@ -56,13 +55,12 @@ $(document).ready(function() {
   }
 });
 
-function isOnline(requestUrl) {
+function isOffline(requestUrl) {
   $.getJSON(requestUrl, function(channelData) {
     /*Here all remains the same except that this time we don't show summary of the channel since its offline and we put Offline badge infront of Channel name*/
-    var logo = channelData.logo;
-    var name = channelData.display_name;
-    var link = channelData.url;
-    var media = "<li class='media my-4'><img class='mr-3' src=" + logo + " alt='channel's logo'><div class='media-body text-center'><a href=" + link + " target='_blank'><h5 class='mt-0 mb-1'>" + name + " <sup><span class='badge badge-pill badge-warning'>Offline</span></sup></h5></a></div></li>";
+    var { logo, display_name:name, url:link } = channelData;
+
+    var media = "<li class='media my-4'><img class='mr-3' src=" + logo + " alt="+name+"><div class='media-body text-center'><a href=" + link + " target='_blank'><h5 class='mt-0 mb-1'>" + name + " <sup><span class='badge badge-pill badge-warning'>Offline</span></sup></h5></a></div></li>";
     //Appending the created <li> in the All and offline tab since these are all offline channels list
     $("#allTabDrop").append(media);
     $("#offlineTabDrop").append(media);
